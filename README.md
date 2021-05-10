@@ -12,12 +12,12 @@ Add the necessary packages from `template.tex` to your preamble. Those are speci
 
 Still in the preamble you must define colors for your listings environment. These are:
 
-`\definecolor{codepurple}{rgb}{0.435,0.259,0.757}`
-`\definecolor{codeblue}{rgb}{0,0.361,0.773}`
-`\definecolor{codered}{rgb}{0.843,0.227,0.286}`
-`\definecolor{codeorange}{rgb}{0.89,0.384,0.035}`
-`\definecolor{codecomment}{rgb}{0.012,0.184,0.384}`
-`\definecolor{codecommentsingle}{rgb}{0.416,0.451,0.490}`
+*`\definecolor{codepurple}{rgb}{0.435,0.259,0.757}`
+*`\definecolor{codeblue}{rgb}{0,0.361,0.773}`
+*`\definecolor{codered}{rgb}{0.843,0.227,0.286}`
+*`\definecolor{codeorange}{rgb}{0.89,0.384,0.035}`
+*`\definecolor{codecomment}{rgb}{0.012,0.184,0.384}`
+*`\definecolor{codecommentsingle}{rgb}{0.416,0.451,0.490}`
 
 Then you need to define a language such that we can achieve the intended syntax highlighting. 
 You can define more than one language, but the template contains just this one, "fredcode":
