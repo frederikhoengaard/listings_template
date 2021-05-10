@@ -39,7 +39,7 @@ You can define more than one language, but the template contains just this one, 
     keywordstyle = [3]{\color{codepurple}},
     morekeywords = [3]{predict,round,sum,fit,ones,sum_squared_residuals,sum_squared_errors,inv,dot}, % this should contain the invocation of functions or methods
     keywordstyle = [4]{\color{codered}},
-    morekeywords = [4]{from,import,def,class,for,while,return,if,elif,else,continue,and,or},
+    morekeywords = [4]{from,import,def,class,for,while,return,if,elif,else,continue,and,or,as},
     keywordstyle = [5]{\color{codeblue}},
     morekeywords = [5]{in,not, False, True, None},
     keywordstyle = [6]{\color{codeorange}},
