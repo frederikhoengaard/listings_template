@@ -50,8 +50,10 @@ You can define more than one language, but the template contains just this one, 
     lineskip = 4pt
 }
 ```
-Remember that this definition is specific to the code snippets in template.tex. In particular you want to adjust the lists for morekeywords 3 and 6.
+Remember that this definition is specific to the code snippets in template.tex. In particular you want to adjust the lists for morekeywords 3 and 6. These can be added somewhat automatically as described below.
 
 ## Automated language config
 
-You can have the `listings_config.py` write the preamble for you. Just open the script and set the filename variable to point to the appropriate python file.
+You can have the `listings_config.py` write the preamble for you. Just open the script and set the filename variable to point to the appropriate python file and run it. It will print the language definition to the console and you can then just copy/paste it to your LaTeX preamble.
+
+**Attention** - running `listings_config.py` on your on own python script will only identify functions, methods and invocations of these if they are defined in the same script. This means that if you import a library such as numpy and you invoke methods from it then those methods should be added to the morekeywords 3 list in the language definition.
