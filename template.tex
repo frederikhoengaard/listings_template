@@ -1,0 +1,98 @@
+\documentclass[a4paper,10pt,leqno]{article} %Document formatting
+\usepackage[margin=2.5cm]{geometry} %margin sizes
+
+
+\usepackage{listings}
+\usepackage{inconsolata}
+\usepackage{xcolor}
+
+\definecolor{codepurple}{rgb}{0.435,0.259,0.757}
+\definecolor{codeblue}{rgb}{0,0.361,0.773}
+\definecolor{codered}{rgb}{0.843,0.227,0.286}
+\definecolor{codeorange}{rgb}{0.89,0.384,0.035}
+\definecolor{codecomment}{rgb}{0.012,0.184,0.384}
+\definecolor{codecommentsingle}{rgb}{0.416,0.451,0.490}
+
+\lstdefinelanguage{fredcode}{
+    basicstyle=\ttfamily\footnotesize,
+    morecomment = [s][\color{codecomment}]{"""}{"""},
+    morecomment = [s][\color{codecomment}]{'}{'},
+    morecomment = [s][\color{codecomment}]{"}{"},
+    morecomment = [l][\color{codecommentsingle}]{\#},
+    keywordstyle = [2]{\color{codepurple}},
+    morekeywords = [2]{print,range,abs,len,append,open,list,map,split,readlines,sort,round,inv,dot},
+    keywordstyle = [3]{\color{codepurple}},
+    morekeywords = [3]{predict,round,sum,fit,ones,sum_squared_residuals,sum_squared_errors}, % this should contain the invocation of functions or methods
+    keywordstyle = [4]{\color{codered}},
+    morekeywords = [4]{from,import,def,class,for,while,return,if,elif,else,continue,and,or},
+    keywordstyle = [5]{\color{codeblue}},
+    morekeywords = [5]{in,not, False, True, None},
+    keywordstyle = [6]{\color{codeorange}},
+    morekeywords = [6]{ValueError,KeyError,ZeroDivisionError,KFold,X,T,X_train,X_test,Pipeline,LinearRegression,PolynomialFeatures,StandardScaler},  % this should contain any oject name beginning with uppercase letter
+    alsoletter = {**,==,>=,<=,=,+,-,/,\%,*,*=,+=,-=,/,//,=,!=,1,2,3,4,5,6,7,8,9},
+    keywordstyle = [7]{\color{codeblue}},
+    morekeywords = [7]{**,==,=,+,-,/,\%,*,*=,+=,-=,/=,!=,1,2,3,4,5,6,7,8,9},
+    lineskip = 4pt
+}
+
+
+
+
+\begin{document}
+
+\begin{lstlisting}[language=fredcode]
+import numpy as np
+from metrics import sum_squared_errors, sum_squared_residuals
+
+
+class LinearRegression: # HML p 106
+    def __init__(self):
+        self.best_theta = None
+        self.intercept_ = None
+        self.coef_ = None
+        self.is_fitted = False
+
+    def fit(self, features: np.array, targets: np.array) -> None:
+        X = np.copy(features)
+        y = np.copy(targets)
+        X = np.c_[np.ones((len(X), 1)), X] # add x0 = 1 to each instance
+        self.best_theta = np.linalg.inv(X.T.dot(X)).dot(X.T).dot(y)
+        self.intercept_ = self.best_theta[0]
+        self.coef_ = self.best_theta[1:]
+        self.is_fitted = True
+       
+    def predict(self, features: np.array) -> np.array:
+        predictions = np.c_[np.ones((len(features), 1)), features] # add x0 = 1 to each instance
+        return predictions.dot(self.best_theta)
+
+    def score(self, features:np.array, targets: np.array) -> float:
+        if not self.is_fitted:
+            raise ValueError('Linear regression model must first be fitted!')
+        predicted_targets = self.predict(features)
+        return (1 - (sum_squared_residuals(targets,predicted_targets) / 
+        sum_squared_errors(targets,predicted_targets)))
+\end{lstlisting}
+
+\begin{lstlisting}[language=fredcode]
+def accuracy_score(
+        true_labels,
+        predicted_labels,
+        normalize: bool = True,
+    ) -> float:   
+    n_samples_true, n_samples_predicted = len(true_labels), len(predicted_labels)
+    if n_samples_true != n_samples_predicted:
+        raise ValueError()
+    n_correct_predictions = 0
+    for i in range(len(true_labels)):
+        if  true_labels[i] == predicted_labels[i]:
+            n_correct_predictions += 1
+    if normalize:
+        return n_correct_predictions / n_samples_true
+    else:
+        return n_correct_predictions
+
+\end{lstlisting}
+
+
+
+\end{document}
