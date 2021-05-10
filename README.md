@@ -37,13 +37,13 @@ You can define more than one language, but the template contains just this one, 
     keywordstyle = [2]{\color{codepurple}},
     morekeywords = [2]{print,range,abs,len,append,open,list,map,split,readlines,sort,round,zip,yield},
     keywordstyle = [3]{\color{codepurple}},
-    morekeywords = [3]{predict,round,sum,fit,ones,sum_squared_residuals,sum_squared_errors,inv,dot}, % this should contain the invocation of functions or methods
+    morekeywords = [3]{fit,predict,score,accuracy_score,__init__,inv,dot}, % this should contain the invocation of functions or methods
     keywordstyle = [4]{\color{codered}},
     morekeywords = [4]{from,import,def,class,for,while,return,if,elif,else,continue,and,or,as},
     keywordstyle = [5]{\color{codeblue}},
     morekeywords = [5]{in,not, False, True, None},
     keywordstyle = [6]{\color{codeorange}},
-    morekeywords = [6]{ValueError,KeyError,ZeroDivisionError,X,T,LinearRegression},  % this should contain any oject name beginning with uppercase letter
+    morekeywords = [6]{ValueError,HML,Linear,T,X,LinearRegression},  % this should contain any oject name beginning with uppercase letter
     alsoletter = {**,==,>=,<=,=,+,-,/,\%,*,*=,+=,-=,/,//,=,!=,1,2,3,4,5,6,7,8,9},
     keywordstyle = [7]{\color{codeblue}},
     morekeywords = [7]{**,==,=,+,-,/,\%,*,*=,+=,-=,/=,!=,1,2,3,4,5,6,7,8,9},
@@ -54,3 +54,4 @@ Remember that this definition is specific to the code snippets in template.tex. 
 
 ## Automated language config
 
+You can have the `listings_config.py` write the preamble for you. Just open the script and set the filename variable to point to the appropriate python file.
