@@ -2,4 +2,8 @@
 
 ## How to use
 
-Add the necessary packages from `template.tex` to your preamble.
+Add the necessary packages from `template.tex` to your preamble. Those are specifically:
+
+* listings
+* inconsolata
+* xcolor
