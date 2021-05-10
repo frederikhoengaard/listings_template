@@ -50,3 +50,4 @@ You can define more than one language, but the template contains just this one, 
     lineskip = 4pt
 }
 ```
+Remember that this definition is specific to the code snippets in template.tex. In particular you want to adjust the lists for morekeywords 3 and 6.
