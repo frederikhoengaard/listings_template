@@ -1,4 +1,4 @@
-# LaTeX template for Python listings enviroments
+# LaTeX template for Python listings environments
 
 This template enables 
 
